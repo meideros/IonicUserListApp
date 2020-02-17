@@ -1,0 +1,19 @@
+<ion-content>
+  <h1 style="color: darkblue; text-align: center; font-size: 40px" >Connexion</h1>
+  <p style="text-align: center; color: darkred; font-size: 20px" *ngIf="!find">{{error}}</p>
+    <ion-item>
+      <ion-label position="floating" style="font-size: 30px">Utilisateur</ion-label>
+      <ion-input [(ngModel)]="userByInput" type="text" style="font-size: 25px; color: darkblue"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" style="font-size: 30px">Mot de passe</ion-label>
+      <ion-input [(ngModel)]="passwordByInput" type="password" style="font-size: 25px; color: darkblue"></ion-input>
+    </ion-item>
+
+    <ion-item>
+    </ion-item>
+
+    <button style="background-color: darkblue; width: 90%; height: 50px; border-radius: 15px; border: none; margin-left: 15px; color: white; font-size: 20px " type="submit" (click)="getAllUser()">Se connecter</button>
+
+  </ion-content>
