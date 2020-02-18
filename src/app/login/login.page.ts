@@ -12,27 +12,28 @@ export class LoginPage implements OnInit {
   userByInput: string;
   error: string;
   passwordByInput: string;
-  find;
+  isConnected;
   constructor(private apiService: ApiService, private nvc: NavController) {
     this.UserData = [];
   }
 
   ngOnInit() {
-    this.nvc.navigateRoot('login');
+    
   }
   getAllUser() {
     this.apiService.getUser().subscribe(response => {
       this.UserData = response;
-      for (const studentsDataKey in this.UserData) {
+      for (const key in this.UserData) {
         // tslint:disable-next-line:max-line-length
-        if (this.UserData[studentsDataKey].login.username === this.userByInput && this.UserData[studentsDataKey].login.password === this.passwordByInput) {
-          this.find = true;
+        if (this.UserData[key].login.username === this.userByInput &&
+           this.UserData[key].login.password === this.passwordByInput) {
+          this.isConnected = true;
           break;
         } else {
-          this.find = false;
+          this.isConnected = false;
         }
       }
-      if (!this.find) {
+      if (!this.isConnected) {
         this.error = 'Données incorrect';
       } else {
         this.nvc.navigateRoot('user-list');
